@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetAPIEx", "MetAPIEx\MetAPIEx.csproj", "{991CBAC8-7ABD-450B-96DC-077415DAC94C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBLayer", "DBLayer\DBLayer.csproj", "{11605F81-72DA-494A-90EE-800325143ED2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusLayer", "BusLayer\BusLayer.csproj", "{A7300795-EB44-428E-8CBE-8FF2CC803E25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{991CBAC8-7ABD-450B-96DC-077415DAC94C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{991CBAC8-7ABD-450B-96DC-077415DAC94C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{991CBAC8-7ABD-450B-96DC-077415DAC94C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11605F81-72DA-494A-90EE-800325143ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11605F81-72DA-494A-90EE-800325143ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11605F81-72DA-494A-90EE-800325143ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11605F81-72DA-494A-90EE-800325143ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7300795-EB44-428E-8CBE-8FF2CC803E25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7300795-EB44-428E-8CBE-8FF2CC803E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7300795-EB44-428E-8CBE-8FF2CC803E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7300795-EB44-428E-8CBE-8FF2CC803E25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
+﻿
+using BusLayer;
+
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,12 +18,20 @@ namespace MetAPIEx
         static void Main(string[] args)
         {
             Program p = new Program();
-            p.GetStuff();
+            int iteration = 0;
+
+            while (true)
+            {
+                iteration++;
+
+                p.GetStuff();
+                System.Threading.Thread.Sleep(1000*60); // En gang i minuttet
+            }
+
+            
         }
 
-        
-
-        public int GetStuff()//denne har int, så vil da kunne returnere et heltall. 
+        public void GetStuff()//denne har int, så vil da kunne returnere et heltall. 
         {
         //http://jsonviewer.stack.hu/
         //https://peterdaugaardrasmussen.com/2022/01/18/how-to-get-a-property-from-json-using-selecttoken/
@@ -41,12 +52,19 @@ namespace MetAPIEx
                     JObject jObj = JObject.Parse(result);
                     JToken data = jObj.SelectToken("properties.timeseries[0].data.instant.details");
 
-                    //double temp = data.Value<double>("air_temperature");//key name står i " " - getting key.value
+                    //get the data u like, se under
+                    double temp = data.Value<double>("air_temperature");//key name står i " " - getting key.value
+                    double windSpeed = data.Value<double>("wind_speed");
+                    double humidity = data.Value<double>("relative_humidity");
+
+                    //insert to db - call method from bl
+                    Weather weather = new Weather();
+                    weather.InsertWeatherValues(temp, windSpeed, humidity);
                 }
-                return 0;//returner ønsket verdi
             }
             catch { Exception ex; }
-            return 0;//returner ønsket verdi
         }
+
+
     }
 }
