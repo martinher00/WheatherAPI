@@ -3,6 +3,7 @@ using BusLayer;
 
 using Newtonsoft.Json.Linq;
 using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,12 +21,16 @@ namespace MetAPIEx
             Program p = new Program();
             int iteration = 0;
 
+            int readInterval = 0;
+
             while (true)
             {
                 iteration++;
 
                 p.GetStuff();
-                System.Threading.Thread.Sleep(1000*60); // En gang i minuttet
+
+                readInterval = Int32.Parse(ConfigurationManager.AppSettings["ReadInterval"]); // henter info fra App.config
+                System.Threading.Thread.Sleep(readInterval); // En gang i minuttet
             }
 
             
@@ -50,12 +55,17 @@ namespace MetAPIEx
                 {
                     var result = streamReader.ReadToEnd();
                     JObject jObj = JObject.Parse(result);
-                    JToken data = jObj.SelectToken("properties.timeseries[0].data.instant.details");
+                    JToken weatherData = jObj.SelectToken("properties.timeseries[0].data.instant.details");
+                    JToken timeData = jObj.SelectToken("properties.timeseries[0]");
 
-                    //get the data u like, se under
-                    double temp = data.Value<double>("air_temperature");//key name står i " " - getting key.value
-                    double windSpeed = data.Value<double>("wind_speed");
-                    double humidity = data.Value<double>("relative_humidity");
+                    // Getting weather data
+                    double temp = weatherData.Value<double>("air_temperature"); // key name står i " " - getting key.value
+                    double windSpeed = weatherData.Value<double>("wind_speed");
+                    double humidity = weatherData.Value<double>("relative_humidity");
+
+                    // Getting time data
+                    DateTime dateTime = DateTime.Parse(timeData.Value<string>("time"));
+                    //int day = weatherData.value
 
                     //insert to db - call method from bl
                     Weather weather = new Weather();
