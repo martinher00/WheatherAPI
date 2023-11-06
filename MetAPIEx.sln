@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBLayer", "DBLayer\DBLayer.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusLayer", "BusLayer\BusLayer.csproj", "{A7300795-EB44-428E-8CBE-8FF2CC803E25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationApi", "WebApplicationApi\WebApplicationApi.csproj", "{510D836E-392F-4A24-8715-6EB4D9439D4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A7300795-EB44-428E-8CBE-8FF2CC803E25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7300795-EB44-428E-8CBE-8FF2CC803E25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7300795-EB44-428E-8CBE-8FF2CC803E25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{510D836E-392F-4A24-8715-6EB4D9439D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{510D836E-392F-4A24-8715-6EB4D9439D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{510D836E-392F-4A24-8715-6EB4D9439D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{510D836E-392F-4A24-8715-6EB4D9439D4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

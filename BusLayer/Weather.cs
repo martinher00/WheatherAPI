@@ -9,10 +9,10 @@ namespace BusLayer
 {
     public class Weather
     {
-        public void InsertWeatherValues(double temp, double windSpeed, double humidity)
+        public void InsertWeatherValues(double temp, double windSpeed, double humidity, DateTime dateTime)
         {
             DBLayer dBLayer = new DBLayer();
-            dBLayer.InsertWeatherValues(temp, windSpeed, humidity);
+            dBLayer.InsertWeatherValues(temp, windSpeed, humidity, dateTime);
         }
     }
 }

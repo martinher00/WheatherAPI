@@ -30,13 +30,11 @@ namespace MetAPIEx
                 p.GetStuff();
 
                 readInterval = Int32.Parse(ConfigurationManager.AppSettings["ReadInterval"]); // henter info fra App.config
-                System.Threading.Thread.Sleep(readInterval); // En gang i minuttet
+                System.Threading.Thread.Sleep(readInterval); // En gang i timen
             }
-
-            
         }
 
-        public void GetStuff()//denne har int, så vil da kunne returnere et heltall. 
+        public void GetStuff() 
         {
         //http://jsonviewer.stack.hu/
         //https://peterdaugaardrasmussen.com/2022/01/18/how-to-get-a-property-from-json-using-selecttoken/
@@ -65,16 +63,13 @@ namespace MetAPIEx
 
                     // Getting time data
                     DateTime dateTime = DateTime.Parse(timeData.Value<string>("time"));
-                    //int day = weatherData.value
 
                     //insert to db - call method from bl
                     Weather weather = new Weather();
-                    weather.InsertWeatherValues(temp, windSpeed, humidity);
+                    weather.InsertWeatherValues(temp, windSpeed, humidity, dateTime);
                 }
             }
             catch { Exception ex; }
         }
-
-
     }
 }

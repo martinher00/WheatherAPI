@@ -12,15 +12,21 @@ namespace DataBaseLayer
     public class DBLayer
     {
         public DBLayer() { }
-        public void InsertWeatherValues(double temp,double windSpeed,double humidity)
+        public void InsertWeatherValues(double temp,double windSpeed,double humidity,DateTime datetime)
         {
+            // splitting DateTime into Day, Month and Year
+            int yr = datetime.Year;
+            int mn = datetime.Month;
+            int dy = datetime.Day;
+            int hr = datetime.Hour;
+
             SqlParameter param;
             var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO weather_data VALUES (@temp, @windSpeed, @humidity);", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO weather_data VALUES (@temp, @windSpeed, @humidity, @year, @month, @day, @hour, @time_inserted);", conn);
                 cmd.CommandType = CommandType.Text;
 
                 param = new SqlParameter("@temp", SqlDbType.Float);
@@ -35,11 +41,30 @@ namespace DataBaseLayer
                 param.Value = humidity;
                 cmd.Parameters.Add(param);
 
+                param = new SqlParameter("@year", SqlDbType.Int);
+                param.Value = yr;
+                cmd.Parameters.Add(param);
+
+                param = new SqlParameter("@month", SqlDbType.Int);
+                param.Value = mn;
+                cmd.Parameters.Add(param);
+
+                param = new SqlParameter("@day", SqlDbType.Int);
+                param.Value = dy;
+                cmd.Parameters.Add(param);
+
+                param = new SqlParameter("@hour", SqlDbType.Int);
+                param.Value = hr;
+                cmd.Parameters.Add(param);
+
+                param = new SqlParameter("@time_inserted", SqlDbType.DateTime);
+                param.Value = datetime;
+                cmd.Parameters.Add(param);
+
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
             }
         }
-
     }
 }
