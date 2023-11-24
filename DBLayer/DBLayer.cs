@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Security.Cryptography.X509Certificates;
 
 namespace DataBaseLayer
 {
@@ -63,8 +64,26 @@ namespace DataBaseLayer
 
                 cmd.ExecuteNonQuery();
                 conn.Close();
-
             }
+        }
+
+        public DataTable GetWeatherValues()
+        {
+            DataTable dt = new DataTable(); 
+            
+            var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM weather_data ", conn);
+                cmd.CommandType = CommandType.Text;
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                dt.Load(reader);
+               
+            }
+            return dt;
         }
     }
 }
