@@ -14,23 +14,27 @@
 
             <asp:Label ID="Label1" runat="server" Text="Select timespan: "></asp:Label>
             <asp:DropDownList ID="DropDownListTimeSpan" runat="server">
-                <asp:ListItem Value="">Daily</asp:ListItem>
-                <asp:ListItem Value="">Weekly</asp:ListItem>
-                <asp:ListItem Value="">Monthly</asp:ListItem>
+                <asp:ListItem Value="daily">Daily</asp:ListItem>
+                <asp:ListItem Value="weekly">Weekly</asp:ListItem>
+                <asp:ListItem Value="monthly">Monthly</asp:ListItem>
             </asp:DropDownList>
 
             <br />
 
-            <asp:Label ID="Label2" runat="server" Text="Select date and time: "></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="Select year, month and day: "></asp:Label>
 
-            <asp:DropDownList ID="DropDownListMonth" runat="server">
+            <asp:DropDownList ID="DropDownListYear" runat="server" OnSelectedIndexChanged="DropDownListYear_SelectedIndexChanged">
+                <asp:ListItem Value="2023">2023</asp:ListItem>
+            </asp:DropDownList>
+
+            <asp:DropDownList ID="DropDownListMonth" runat="server" OnSelectedIndexChanged="DropDownListMonth_SelectedIndexChanged" AutoPostBack="True">
                 <asp:ListItem Value="01">January</asp:ListItem>
                 <asp:ListItem Value="02">February</asp:ListItem>
                 <asp:ListItem Value="03">March</asp:ListItem>
                 <asp:ListItem Value="04">April</asp:ListItem>
                 <asp:ListItem Value="05">May</asp:ListItem>
                 <asp:ListItem Value="06">Juni</asp:ListItem>
-                <asp:ListItem Value="07">Juli</asp:ListItem>
+                <asp:ListItem Value="07">July</asp:ListItem>
                 <asp:ListItem Value="08">August</asp:ListItem>
                 <asp:ListItem Value="09">September</asp:ListItem>
                 <asp:ListItem Value="10">October</asp:ListItem>
@@ -38,7 +42,7 @@
                 <asp:ListItem Value="12">December</asp:ListItem>
             </asp:DropDownList>
 
-            <asp:DropDownList ID="DropDownListDate" runat="server">
+            <asp:DropDownList ID="DropDownListDays" runat="server">
                 
             </asp:DropDownList>
 

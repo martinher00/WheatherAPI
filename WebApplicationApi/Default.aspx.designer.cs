@@ -51,6 +51,15 @@ namespace WebApplicationApi
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
+        /// DropDownListYear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListYear;
+
+        /// <summary>
         /// DropDownListMonth control.
         /// </summary>
         /// <remarks>
@@ -60,13 +69,13 @@ namespace WebApplicationApi
         protected global::System.Web.UI.WebControls.DropDownList DropDownListMonth;
 
         /// <summary>
-        /// DropDownListDate control.
+        /// DropDownListDays control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListDate;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListDays;
 
         /// <summary>
         /// ExecuteQuery control.

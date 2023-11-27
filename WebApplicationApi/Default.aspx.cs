@@ -6,64 +6,52 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BusLayer;
 
+
 namespace WebApplicationApi
 {
     public partial class Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            BindDropDownListDates();
+            if (!IsPostBack)
+            {
+                
+            }
+
+            if (DropDownListTimeSpan.SelectedValue == "daily")
+            {
+                BindDropDownListDays();
+            }
+            else if (DropDownListTimeSpan.SelectedValue == "monthly")
+            {
+                DropDownListDays.Visible = false;
+            }
+            else { BindDropDownListDays(); }
+
+
         }
 
-        private void BindDropDownListDates()
+        private void BindDropDownListDays()
         {
+            DropDownListDays.Items.Clear();
+            int year = int.Parse(DropDownListYear.SelectedValue);
             int monthNumber = int.Parse(DropDownListMonth.SelectedValue);
-            int days;
+            int days = System.DateTime.DaysInMonth(year, monthNumber);
 
-            switch(monthNumber)
+            for (int i = 1; i < days + 1; i++)
             {
-                case 01:
-                    days = 31;
-                    for (int i = 1; i < days+1; i++)
-                    {
-                        DropDownListDate.Items.Add(i.ToString());
-                    }
-
-                    break;
-                case 02:
-                    days = 28;
-                    break;
-                case 03:
-                    days = 31;
-                    break;
-                case 04:
-                    days = 30;
-                    break;
-                case 05:
-                    days = 31;
-                    break;
-                case 06:
-                    days = 30;
-                    break;
-                case 07:
-                    days = 31;
-                    break;
-                case 08:
-                    days = 31;
-                    break;
-                case 09:
-                    days = 30;
-                    break;
-                case 10:
-                    days = 31;
-                    break;
-                case 11:
-                    days = 30;
-                    break;
-                case 12:
-                    days = 31;
-                    break;
+                DropDownListDays.Items.Add(i.ToString());
             }
+        }
+
+        protected void DropDownListYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindDropDownListDays();
+        }
+
+        protected void DropDownListMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindDropDownListDays();
         }
     }
 }
