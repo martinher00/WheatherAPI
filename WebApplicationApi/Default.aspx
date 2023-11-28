@@ -50,7 +50,7 @@
 
             <asp:Button ID="ExecuteQuery" runat="server" Text="View" />
 
-            <asp:Chart ID="Chart1" runat="server">
+            <asp:Chart ID="WeatherChart" runat="server">
                 <Series>
                     <asp:Series Name="Series1"></asp:Series>
                 </Series>

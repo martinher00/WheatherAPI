@@ -19,18 +19,19 @@ namespace MetAPIEx
         static void Main(string[] args)
         {
             Program p = new Program();
-            int iteration = 0;
 
             int readInterval = 0;
 
             while (true)
             {
-                iteration++;
-
-                p.GetStuff();
+                if(DateTime.Now.Minute == 1)
+                {
+                    p.GetStuff();
+                    Thread.Sleep(1000*60*50);
+                }
 
                 readInterval = Int32.Parse(ConfigurationManager.AppSettings["ReadInterval"]); // henter info fra App.config
-                System.Threading.Thread.Sleep(readInterval); // En gang i timen
+                Thread.Sleep(readInterval);
             }
         }
 

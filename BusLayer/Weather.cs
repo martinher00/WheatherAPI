@@ -49,7 +49,6 @@ namespace BusLayer
                 weather.time_inserterd = (DateTime)dr["time_inserted"];
 
                 weather_data.Add(weather);
-
             }
             return weather_data;
         }
