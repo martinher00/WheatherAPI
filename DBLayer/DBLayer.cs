@@ -69,15 +69,50 @@ namespace DataBaseLayer
 
         public DataTable GetWeatherValues()
         {
-            DataTable dt = new DataTable(); 
+            DataTable dt = new DataTable();
+
             
             var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
+
+            
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM weather_data ", conn);
                 cmd.CommandType = CommandType.Text;
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                dt.Load(reader);
+            }
+            return dt;
+        }
+
+        public DataTable GetWeatherValuesByYearMonthDay(int yr, int mn, int dy)
+        {
+
+            DataTable dt = new DataTable();
+
+            SqlParameter param;
+            var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM weather_data WHERE year = @yr AND month = @mn AND day = @dy", conn);
+                cmd.CommandType = CommandType.Text;
+
+                param = new SqlParameter("@yr", SqlDbType.Float);
+                param.Value = yr;
+                cmd.Parameters.Add(param);
+
+                param = new SqlParameter("@mn", SqlDbType.Float);
+                param.Value = mn;
+                cmd.Parameters.Add(param);
+
+                param = new SqlParameter("@dy", SqlDbType.Float);
+                param.Value = dy;
+                cmd.Parameters.Add(param);
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 dt.Load(reader);

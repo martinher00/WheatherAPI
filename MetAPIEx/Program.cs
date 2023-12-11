@@ -26,7 +26,7 @@ namespace MetAPIEx
             {
                 if(DateTime.Now.Minute == 1)
                 {
-                    p.GetStuff();
+                    p.GetWeatherDataNow();
                     Thread.Sleep(1000*60*50);
                 }
 
@@ -35,7 +35,7 @@ namespace MetAPIEx
             }
         }
 
-        public void GetStuff() 
+        public void GetWeatherDataNow() 
         {
         //http://jsonviewer.stack.hu/
         //https://peterdaugaardrasmussen.com/2022/01/18/how-to-get-a-property-from-json-using-selecttoken/

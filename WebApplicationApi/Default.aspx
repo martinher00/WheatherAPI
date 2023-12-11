@@ -50,12 +50,15 @@
 
             <asp:Button ID="ExecuteQuery" runat="server" Text="View" OnClick="ExecuteQuery_Click" />
 
-            <asp:Chart ID="WeatherChart" runat="server">
+            <asp:Chart ID="ChartWeatherTemp" runat="server">
                 <Series>
                     <asp:Series Name="Series1"></asp:Series>
                 </Series>
                 <ChartAreas>
-                    <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+                    <asp:ChartArea Name="ChartArea1">
+                        <AxisX Title="Tid"></AxisX>
+                        <AxisY Title="Temperatur"></AxisY>
+                    </asp:ChartArea>
                 </ChartAreas>
             </asp:Chart>
 
