@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.WebControls;
 using BusLayer;
-
 
 namespace WebApplicationApi
 {
@@ -52,6 +53,26 @@ namespace WebApplicationApi
         protected void DropDownListMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
             BindDropDownListDays();
+        }
+
+        protected void ExecuteQuery_Click(object sender, EventArgs e)
+        {
+            int year = int.Parse(DropDownListYear.SelectedValue);
+            int monthNumber = int.Parse(DropDownListMonth.SelectedValue);
+            int day = int.Parse(DropDownListDays.SelectedValue);
+
+            Weather weather = new Weather();
+
+            List<Weather> weatherList = new List<Weather>();
+            weatherList = weather.GetWeatherValuesByYearMonthDay(year, monthNumber, day);
+
+            var max = weatherList.Max(t => t.Temperature);
+
+            ChartWeatherTemp.DataSource = weatherList;
+            ChartWeatherTemp.Series[0].XValueMember = "Temperature";
+            ChartWeatherTemp.Series[0].YValueMembers = "Hour"; 
+
+            ChartWeatherTemp.DataBind();
         }
     }
 }

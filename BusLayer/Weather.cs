@@ -52,6 +52,29 @@ namespace BusLayer
             }
             return weather_data;
         }
-        
+
+        public List<Weather> GetWeatherValuesByYearMonthDay(int yr, int mn, int dy)
+        {
+            DBLayer dBLayer = new DBLayer();
+            List<Weather> weather_data = new List<Weather>();
+            //mapping stuff
+            foreach (DataRow dr in dBLayer.GetWeatherValuesByYearMonthDay(yr,mn,dy).AsEnumerable())
+            {
+                Weather weather = new Weather();
+                weather.DataId = (int)dr["data_id"];
+                weather.Temperature = (double)dr["temperature"];
+                weather.WindSpeed = (double)dr["windspeed"];
+                weather.Humidity = (double)dr["humidity"];
+                weather.Year = (int)dr["year"];
+                weather.Month = (int)dr["month"];
+                weather.Day = (int)dr["day"];
+                weather.Hour = (int)dr["hour"];
+                weather.time_inserterd = (DateTime)dr["time_inserted"];
+
+                weather_data.Add(weather);
+            }
+            return weather_data;
+        }
+
     }
 }
