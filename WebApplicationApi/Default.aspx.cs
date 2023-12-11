@@ -12,20 +12,8 @@ namespace WebApplicationApi
         {
             if (!IsPostBack)
             {
-
-            }
-
-            if (DropDownListTimeSpan.SelectedValue == "daily")
-            {
                 BindDropDownListDays();
             }
-            else if (DropDownListTimeSpan.SelectedValue == "monthly")
-            {
-                DropDownListDays.Visible = false;
-            }
-            else { BindDropDownListDays(); }
-
-
         }
 
         private void BindDropDownListDays()
