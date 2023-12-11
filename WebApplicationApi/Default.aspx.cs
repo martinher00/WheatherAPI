@@ -53,5 +53,10 @@ namespace WebApplicationApi
         {
             BindDropDownListDays();
         }
+
+        protected void ExecuteQuery_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

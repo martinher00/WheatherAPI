@@ -48,7 +48,7 @@
 
             <br />
 
-            <asp:Button ID="ExecuteQuery" runat="server" Text="View" />
+            <asp:Button ID="ExecuteQuery" runat="server" Text="View" OnClick="ExecuteQuery_Click" />
 
             <asp:Chart ID="WeatherChart" runat="server">
                 <Series>
