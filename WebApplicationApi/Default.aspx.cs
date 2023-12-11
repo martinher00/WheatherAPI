@@ -1,12 +1,8 @@
-﻿using System;
+﻿using BusLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.DataVisualization.Charting;
-using System.Web.UI.WebControls;
-using BusLayer;
 
 namespace WebApplicationApi
 {
@@ -16,7 +12,7 @@ namespace WebApplicationApi
         {
             if (!IsPostBack)
             {
-                
+
             }
 
             if (DropDownListTimeSpan.SelectedValue == "daily")
@@ -42,6 +38,7 @@ namespace WebApplicationApi
             for (int i = 1; i < days + 1; i++)
             {
                 DropDownListDays.Items.Add(i.ToString());
+
             }
         }
 
@@ -66,11 +63,18 @@ namespace WebApplicationApi
             List<Weather> weatherList = new List<Weather>();
             weatherList = weather.GetWeatherValuesByYearMonthDay(year, monthNumber, day);
 
-            var max = weatherList.Max(t => t.Temperature);
+            try
+            {
+                var max = weatherList.Max(t => t.Temperature);
 
-            ChartWeatherTemp.DataSource = weatherList;
-            ChartWeatherTemp.Series[0].YValueMembers = "Temperature";
-            ChartWeatherTemp.Series[0].XValueMember = "Hour"; 
+                ChartWeatherTemp.DataSource = weatherList;
+                ChartWeatherTemp.Series[0].YValueMembers = "Temperature";
+                ChartWeatherTemp.Series[0].XValueMember = "Hour";
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
 
             ChartWeatherTemp.DataBind();
         }
