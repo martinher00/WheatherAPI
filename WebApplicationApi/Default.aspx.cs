@@ -69,8 +69,8 @@ namespace WebApplicationApi
             var max = weatherList.Max(t => t.Temperature);
 
             ChartWeatherTemp.DataSource = weatherList;
-            ChartWeatherTemp.Series[0].XValueMember = "Temperature";
-            ChartWeatherTemp.Series[0].YValueMembers = "Hour"; 
+            ChartWeatherTemp.Series[0].YValueMembers = "Temperature";
+            ChartWeatherTemp.Series[0].XValueMember = "Hour"; 
 
             ChartWeatherTemp.DataBind();
         }
