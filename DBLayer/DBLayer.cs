@@ -67,7 +67,7 @@ namespace DataBaseLayer
             }
         }
 
-        public DataTable GetWeatherValues()
+        public DataTable GetAllWeatherValues()
         {
             DataTable dt = new DataTable();
 
@@ -112,6 +112,70 @@ namespace DataBaseLayer
 
                 param = new SqlParameter("@dy", SqlDbType.Float);
                 param.Value = dy;
+                cmd.Parameters.Add(param);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                dt.Load(reader);
+            }
+            return dt;
+        }
+
+        public DataTable GetWeatherValuesByYearWeek(int yr, int wk, int hr)
+        {
+
+            DataTable dt = new DataTable();
+
+            SqlParameter param;
+            var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM weather_data WHERE year = @yr AND week = @wk AND hour = @hr", conn);
+                cmd.CommandType = CommandType.Text;
+
+                param = new SqlParameter("@yr", SqlDbType.Float);
+                param.Value = yr;
+                cmd.Parameters.Add(param);
+
+                param = new SqlParameter("@wk", SqlDbType.Float);
+                param.Value = hr;
+                cmd.Parameters.Add(param);
+
+                param = new SqlParameter("@hr", SqlDbType.Float);
+                param.Value = hr;
+                cmd.Parameters.Add(param);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                dt.Load(reader);
+            }
+            return dt;
+        }
+
+        public DataTable GetWeatherValuesByYearMonth(int yr, int mn, int hr)
+        {
+
+            DataTable dt = new DataTable();
+
+            SqlParameter param;
+            var connectionString = ConfigurationManager.ConnectionStrings["ConnCms"].ConnectionString;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM weather_data WHERE year = @yr AND month = @mn AND hour = @hr", conn);
+                cmd.CommandType = CommandType.Text;
+
+                param = new SqlParameter("@yr", SqlDbType.Float);
+                param.Value = yr;
+                cmd.Parameters.Add(param);
+
+                param = new SqlParameter("@mn", SqlDbType.Float);
+                param.Value = mn;
+                cmd.Parameters.Add(param);
+
+                param = new SqlParameter("@hr", SqlDbType.Float);
+                param.Value = hr;
                 cmd.Parameters.Add(param);
 
                 SqlDataReader reader = cmd.ExecuteReader();

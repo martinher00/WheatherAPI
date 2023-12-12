@@ -24,7 +24,9 @@
 
             <br />
 
-            <asp:Label ID="Label2" runat="server" Text="Select year, month and day: "></asp:Label>
+            <asp:Label ID="LabelTimeSpanDaily" runat="server" Text="Select year, month and day: "></asp:Label>
+            <asp:Label ID="LabelTimeSpanWeekly" runat="server" Text="Select year and week: "></asp:Label>
+            <asp:Label ID="LabelTimeSpanMonthly" runat="server" Text="Select year and month: "></asp:Label>
 
             <asp:DropDownList ID="DropDownListYear" runat="server" OnSelectedIndexChanged="DropDownListYear_SelectedIndexChanged">
                 <asp:ListItem Value="2023">2023</asp:ListItem>
@@ -45,7 +47,15 @@
                 <asp:ListItem Value="12">December</asp:ListItem>
             </asp:DropDownList>
 
+            <asp:DropDownList ID="DropDownListWeek" runat="server" Visible="false">
+
+            </asp:DropDownList>
+
             <asp:DropDownList ID="DropDownListDays" runat="server">
+                
+            </asp:DropDownList>
+
+            <asp:DropDownList ID="DropDownListHour" runat="server" Visible="false">
                 
             </asp:DropDownList>
 
@@ -59,8 +69,8 @@
                 </Series>
                 <ChartAreas>
                     <asp:ChartArea Name="ChartArea1">
-                        <AxisX Title="Timer"></AxisX>
-                        <AxisY Title="Temperatur"></AxisY>
+                        <AxisX Title="Hours"></AxisX>
+                        <AxisY Title="Temperature"></AxisY>
                     </asp:ChartArea>
                 </ChartAreas>
             </asp:Chart>
