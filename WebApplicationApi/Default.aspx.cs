@@ -16,6 +16,16 @@ namespace WebApplicationApi
             }
         }
 
+        protected void DropDownListYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindDropDownListDays();
+        }
+
+        protected void DropDownListMonth_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BindDropDownListDays();
+        }
+
         private void BindDropDownListDays()
         {
             DropDownListDays.Items.Clear();
@@ -30,26 +40,30 @@ namespace WebApplicationApi
             }
         }
 
-        protected void DropDownListYear_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            BindDropDownListDays();
-        }
-
-        protected void DropDownListMonth_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            BindDropDownListDays();
-        }
-
         protected void ExecuteQuery_Click(object sender, EventArgs e)
         {
+            string timespan = DropDownListTimeSpan.SelectedValue.ToString();
             int year = int.Parse(DropDownListYear.SelectedValue);
             int monthNumber = int.Parse(DropDownListMonth.SelectedValue);
             int day = int.Parse(DropDownListDays.SelectedValue);
 
             Weather weather = new Weather();
-
             List<Weather> weatherList = new List<Weather>();
-            weatherList = weather.GetWeatherValuesByYearMonthDay(year, monthNumber, day);
+
+            switch (timespan)
+            {
+                case "daily":
+                    weatherList = weather.GetWeatherValuesByYearMonthDay(year, monthNumber, day);
+                    break;
+                case "weekly":
+                    weatherList = weather.GetWeatherValuesByYearMonthDay(year, monthNumber, day);
+                    break;
+                case "yearly":
+                    weatherList = weather.GetWeatherValuesByYearMonthDay(year, monthNumber, day);
+                    break;
+                default:
+                    return;
+            }
 
             try
             {
@@ -65,6 +79,32 @@ namespace WebApplicationApi
             }
 
             ChartWeatherTemp.DataBind();
+        }
+
+        protected void DropDownListTimeSpan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string timespan = DropDownListTimeSpan.SelectedValue.ToString();
+
+            switch (timespan)
+            {
+                case "daily":
+                    DropDownListYear.Visible = true;
+                    DropDownListMonth.Visible = true;
+                    DropDownListDays.Visible = true;
+                    break;
+                case "weekly":
+                    DropDownListYear.Visible = true;
+                    DropDownListMonth.Visible = false;
+                    DropDownListDays.Visible = false;
+                    break;
+                case "monthly":
+                    DropDownListYear.Visible = true;
+                    DropDownListMonth.Visible = true;
+                    DropDownListDays.Visible = false;
+                    break;
+                default:
+                    return;
+            }
         }
     }
 }

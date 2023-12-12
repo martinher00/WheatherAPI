@@ -13,11 +13,14 @@
         <div>
 
             <asp:Label ID="Label1" runat="server" Text="Select timespan: "></asp:Label>
-            <asp:DropDownList ID="DropDownListTimeSpan" runat="server">
+
+            <asp:DropDownList ID="DropDownListTimeSpan" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListTimeSpan_SelectedIndexChanged">
                 <asp:ListItem Value="daily">Daily</asp:ListItem>
                 <asp:ListItem Value="weekly">Weekly</asp:ListItem>
                 <asp:ListItem Value="monthly">Monthly</asp:ListItem>
             </asp:DropDownList>
+
+            
 
             <br />
 
@@ -56,7 +59,7 @@
                 </Series>
                 <ChartAreas>
                     <asp:ChartArea Name="ChartArea1">
-                        <AxisX Title="Tid"></AxisX>
+                        <AxisX Title="Timer"></AxisX>
                         <AxisY Title="Temperatur"></AxisY>
                     </asp:ChartArea>
                 </ChartAreas>
