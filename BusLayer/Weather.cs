@@ -54,7 +54,7 @@ namespace BusLayer
             return weather_data;
         }
 
-        public List<Weather> GetWeatherValuesByUserInput(string timespan, int year, int month, int week, int day, int hour)
+        public List<Weather> GetWeatherValuesByUserInput(string timespan, int year, int month, int day, int hour)
         {
             List<Weather> weather_data = new List<Weather>();
 
@@ -65,9 +65,6 @@ namespace BusLayer
                     break;
                 case "monthly":
                     weather_data = GetWeatherValuesByYearMonth(year, month, hour);
-                    break;
-                case "weekly":
-                    weather_data = GetWeatherValuesByYearWeek(year, week, hour);
                     break;
             }
             return weather_data;
@@ -101,29 +98,6 @@ namespace BusLayer
             List<Weather> weather_data = new List<Weather>();
             //mapping stuff
             foreach (DataRow dr in dBLayer.GetWeatherValuesByYearMonth(year, month, hour).AsEnumerable())
-            {
-                Weather weather = new Weather();
-                weather.DataId = (int)dr["data_id"];
-                weather.Temperature = (double)dr["temperature"];
-                weather.WindSpeed = (double)dr["windspeed"];
-                weather.Humidity = (double)dr["humidity"];
-                weather.Year = (int)dr["year"];
-                weather.Month = (int)dr["month"];
-                weather.Day = (int)dr["day"];
-                weather.Hour = (int)dr["hour"];
-                weather.time_inserterd = (DateTime)dr["time_inserted"];
-
-                weather_data.Add(weather);
-            }
-            return weather_data;
-        }
-
-        public List<Weather> GetWeatherValuesByYearWeek(int year, int week, int hour)
-        {
-            DBLayer dBLayer = new DBLayer();
-            List<Weather> weather_data = new List<Weather>();
-            //mapping stuff
-            foreach (DataRow dr in dBLayer.GetWeatherValuesByYearWeek(year, week, hour).AsEnumerable())
             {
                 Weather weather = new Weather();
                 weather.DataId = (int)dr["data_id"];

@@ -16,7 +16,6 @@
 
             <asp:DropDownList ID="DropDownListTimeSpan" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownListTimeSpan_SelectedIndexChanged">
                 <asp:ListItem Value="daily">Daily</asp:ListItem>
-                <asp:ListItem Value="weekly">Weekly</asp:ListItem>
                 <asp:ListItem Value="monthly">Monthly</asp:ListItem>
             </asp:DropDownList>
 
@@ -25,7 +24,6 @@
             <br />
 
             <asp:Label ID="LabelTimeSpanDaily" runat="server" Text="Select year, month and day: "></asp:Label>
-            <asp:Label ID="LabelTimeSpanWeekly" runat="server" Text="Select year and week: "></asp:Label>
             <asp:Label ID="LabelTimeSpanMonthly" runat="server" Text="Select year and month: "></asp:Label>
 
             <asp:DropDownList ID="DropDownListYear" runat="server" OnSelectedIndexChanged="DropDownListYear_SelectedIndexChanged">
@@ -47,14 +45,11 @@
                 <asp:ListItem Value="12">December</asp:ListItem>
             </asp:DropDownList>
 
-            <asp:DropDownList ID="DropDownListWeek" runat="server" Visible="false">
-
-            </asp:DropDownList>
-
             <asp:DropDownList ID="DropDownListDays" runat="server">
                 
             </asp:DropDownList>
 
+            <asp:Label ID="LabelSelectHour" runat="server" Text="Select hour: " Visible="false"></asp:Label>
             <asp:DropDownList ID="DropDownListHour" runat="server" Visible="false">
                 
             </asp:DropDownList>

@@ -51,15 +51,6 @@ namespace WebApplicationApi
         protected global::System.Web.UI.WebControls.Label LabelTimeSpanDaily;
 
         /// <summary>
-        /// LabelTimeSpanWeekly control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelTimeSpanWeekly;
-
-        /// <summary>
         /// LabelTimeSpanMonthly control.
         /// </summary>
         /// <remarks>
@@ -87,15 +78,6 @@ namespace WebApplicationApi
         protected global::System.Web.UI.WebControls.DropDownList DropDownListMonth;
 
         /// <summary>
-        /// DropDownListWeek control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListWeek;
-
-        /// <summary>
         /// DropDownListDays control.
         /// </summary>
         /// <remarks>
@@ -103,6 +85,15 @@ namespace WebApplicationApi
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList DropDownListDays;
+
+        /// <summary>
+        /// LabelSelectHour control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelSelectHour;
 
         /// <summary>
         /// DropDownListHour control.
