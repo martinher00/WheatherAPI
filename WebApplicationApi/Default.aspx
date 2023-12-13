@@ -45,18 +45,17 @@
                 <asp:ListItem Value="12">December</asp:ListItem>
             </asp:DropDownList>
 
-            <asp:DropDownList ID="DropDownListDays" runat="server">
+            <asp:Label ID="LabelSelectDay" runat="server" Text="Select day: "></asp:Label>
+            <asp:DropDownList ID="DropDownListDays" runat="server" AutoPostBack="true">
                 
             </asp:DropDownList>
 
             <asp:Label ID="LabelSelectHour" runat="server" Text="Select hour: " Visible="false"></asp:Label>
-            <asp:DropDownList ID="DropDownListHour" runat="server" Visible="false">
+            <asp:DropDownList ID="DropDownListHour" runat="server" Visible="false" AutoPostBack="true">
                 
             </asp:DropDownList>
 
             <br />
-
-            <asp:Button ID="ExecuteQuery" runat="server" Text="View" OnClick="ExecuteQuery_Click" />
 
             <asp:Chart ID="ChartWeatherTemp" runat="server">
                 <Series>

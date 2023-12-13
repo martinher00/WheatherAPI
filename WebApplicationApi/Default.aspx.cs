@@ -17,6 +17,8 @@ namespace WebApplicationApi
 
                 LabelTimeSpanMonthly.Visible = false;
             }
+
+            GetWeather();
         }
 
         protected void DropDownListYear_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,11 +51,10 @@ namespace WebApplicationApi
             for (int i = 1; i < 24 + 1; i++)
             {
                 DropDownListHour.Items.Add(i.ToString());
-
             }
         }
 
-        protected void ExecuteQuery_Click(object sender, EventArgs e)
+        protected void GetWeather()
         {
             string timespan = DropDownListTimeSpan.SelectedValue.ToString();
             int year = int.Parse(DropDownListYear.SelectedValue);
@@ -65,11 +66,11 @@ namespace WebApplicationApi
             {
                 hour = int.Parse(DropDownListHour.SelectedValue);
             }
-            catch 
-            { 
+            catch
+            {
                 hour = 0;
             }
-            
+
 
             Weather weather = new Weather();
             List<Weather> weatherList = new List<Weather>();
@@ -77,7 +78,6 @@ namespace WebApplicationApi
             weatherList = weather.GetWeatherValuesByUserInput(timespan, year, month, day, hour);
 
             WeatherChartBind(weatherList, timespan);
-            
         }
 
         protected void WeatherChartBind(List<Weather> weatherList, string timespan)
@@ -120,6 +120,7 @@ namespace WebApplicationApi
 
                     LabelTimeSpanDaily.Visible = true;
                     LabelTimeSpanMonthly.Visible = false;
+                    LabelSelectDay.Visible = true;
                     LabelSelectHour.Visible = false;
                     break;
                 case "monthly":
@@ -130,6 +131,7 @@ namespace WebApplicationApi
 
                     LabelTimeSpanDaily.Visible = false;
                     LabelTimeSpanMonthly.Visible = true;
+                    LabelSelectDay.Visible = false;
                     LabelSelectHour.Visible = true;
                     break;
                 default:
