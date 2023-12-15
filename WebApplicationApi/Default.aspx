@@ -19,8 +19,6 @@
                 <asp:ListItem Value="monthly">Monthly</asp:ListItem>
             </asp:DropDownList>
 
-            
-
             <br />
 
             <asp:Label ID="LabelTimeSpanDaily" runat="server" Text="Select year, month and day: "></asp:Label>

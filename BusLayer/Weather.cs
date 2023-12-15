@@ -43,10 +43,10 @@ namespace BusLayer
                 weather.Temperature = (double)dr["temperature"];
                 weather.WindSpeed = (double)dr["windspeed"];
                 weather.Humidity = (double)dr["humidity"];
-                weather.Year = (double)dr["year"];
-                weather.Month = (double)dr["month"];
-                weather.Day = (double)dr["day"];
-                weather.Hour = (double)dr["hour"];
+                weather.Year = (int)dr["year"];
+                weather.Month = (int)dr["month"];
+                weather.Day = (int)dr["day"];
+                weather.Hour = (int)dr["hour"];
                 weather.time_inserterd = (DateTime)dr["time_inserted"];
 
                 weather_data.Add(weather);
